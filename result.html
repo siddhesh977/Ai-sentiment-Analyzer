@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-content">
+        <div class="card">
+            <h1>Analysis Result</h1>
+            <div class="result-display">
+                <p class="result-text">"{{ text }}"</p>
+                <div class="score-breakdown">
+                    <p class="sentiment-label">Sentiment:</p>
+                    <p class="sentiment-value {{ sentiment.lower() }}">{{ sentiment }}</p>
+                </div>
+                <div class="score-breakdown">
+                    <p>Scores:</p>
+                    <div class="scores-list">
+                        <span>Neg: <strong>{{ "%.2f"|format(scores.neg) }}</strong></span>
+                        <span>Neu: <strong>{{ "%.2f"|format(scores.neu) }}</strong></span>
+                        <span>Pos: <strong>{{ "%.2f"|format(scores.pos) }}</strong></span>
+                        <span>Compound: <strong>{{ "%.2f"|format(scores.compound) }}</strong></span>
+                    </div>
+                </div>
+            </div>
+            <a href="/" class="back-link">Analyze another text</a>
+        </div>
+    </div>
+</body>
+</html>
